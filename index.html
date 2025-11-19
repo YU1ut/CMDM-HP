@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Absolute Coordinates Make Motion Generation Easy">
+  <meta name="keywords" content="ACMDM">
+  <meta name="google-site-verification" content="ciQsol-i_rwd2kkpVI_G-EFX4g72KA2HF-cDUi52lIo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Causal Motion Diffusion Models for Autoregressive Motion Generation</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">Causal Motion Diffusion Models for Autoregressive Motion Generation
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                Anonymous CVPR submission
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <!---           Gallery T2M      -->
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <br>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Text-to-Motion Generation</h2>
+      </div>
+      <br>
+      <div class="container">
+        <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+          <i> A person <span style="color:#06C755" ;>raises both knees alternately</span> <span style="color:#DF1817"
+              ;>in a marching motion</span> <span style="color:#00B0F0" ;>in place</span> while keeping rhythm.</i>
+        </p>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content has-text-centered">
+              <div class="videobox">
+                <video poster="" autoplay controls muted loop height="100%">
+                  <source src="./t2m_videos/momask_1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <h2 class="subtitle is-5">MoMask</h2>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content has-text-centered">
+              <div class="videobox">
+                <video poster="" autoplay controls muted loop height="100%">
+                  <source src="./t2m_videos/lcm_1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <h2 class="subtitle is-5">MotionLCM V2</h2>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content has-text-centered">
+              <div class="videobox">
+                <video poster="" autoplay controls muted loop height="100%">
+                  <source src="./t2m_videos/stable_1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <h2 class="subtitle is-5">StableMoFusion</h2>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content has-text-centered">
+              <div class="videobox">
+                <video poster="" autoplay controls muted loop height="100%">
+                  <source src="./t2m_videos/ours_1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <h2 class="subtitle is-5">Ours</h2>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+            <i> A person <span style="color:#06C755" ;>crouches down from standing</span>, <span style="color:#DF1817"
+                ;>touches the ground with fingertips</span>, and then <span style="color:#00B0F0" ;>slowly stands
+                up</span>.
+            </i>
+          </p>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./t2m_videos/momask_2.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">MoMask</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./t2m_videos/lcm_2.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">MotionLCM V2</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./t2m_videos/stable_2.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">StableMoFusion</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./t2m_videos/ours_2.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">Ours</h2>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+              <i> The person <span style="color:#06C755" ;>rotates their arms in a circular motion</span> while <span
+                  style="color:#DF1817" ;>walking forward</span>. </i>
+            </p>
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./t2m_videos/momask_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MoMask</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./t2m_videos/lcm_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MotionLCM V2</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./t2m_videos/stable_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">StableMoFusion</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./t2m_videos/ours_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">Ours</h2>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+                <i> A man <span style="color:#06C755" ;>walks forward</span>, <span style="color:#DF1817" ;>kicks a ball
+                    with left leg</span>, then <span style="color:#00B0F0" ;>walks backward</span>.</i>
+              </p>
+              <div class="columns is-centered">
+                <div class="column">
+                  <div class="content has-text-centered">
+                    <div class="videobox">
+                      <video poster="" autoplay controls muted loop height="100%">
+                        <source src="./t2m_videos/momask_4.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <h2 class="subtitle is-5">MoMask</h2>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="content has-text-centered">
+                    <div class="videobox">
+                      <video poster="" autoplay controls muted loop height="100%">
+                        <source src="./t2m_videos/lcm_4.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <h2 class="subtitle is-5">MotionLCM V2</h2>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="content has-text-centered">
+                    <div class="videobox">
+                      <video poster="" autoplay controls muted loop height="100%">
+                        <source src="./t2m_videos/stable_4.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <h2 class="subtitle is-5">StableMoFusion</h2>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="content has-text-centered">
+                    <div class="videobox">
+                      <video poster="" autoplay controls muted loop height="100%">
+                        <source src="./t2m_videos/ours_4.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <h2 class="subtitle is-5">Ours</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+                  <i> A person <span style="color:#06C755" ;>runs forward</span> while <span style="color:#DF1817"
+                      ;>pretending to be a bird taking flight</span>.</i>
+                </p>
+                <div class="columns is-centered">
+                  <div class="column">
+                    <div class="content has-text-centered">
+                      <div class="videobox">
+                        <video poster="" autoplay controls muted loop height="100%">
+                          <source src="./t2m_videos/momask_5.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <h2 class="subtitle is-5">MoMask</h2>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="content has-text-centered">
+                      <div class="videobox">
+                        <video poster="" autoplay controls muted loop height="100%">
+                          <source src="./t2m_videos/lcm_5.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <h2 class="subtitle is-5">MotionLCM V2</h2>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="content has-text-centered">
+                      <div class="videobox">
+                        <video poster="" autoplay controls muted loop height="100%">
+                          <source src="./t2m_videos/stable_5.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <h2 class="subtitle is-5">StableMoFusion</h2>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="content has-text-centered">
+                      <div class="videobox">
+                        <video poster="" autoplay controls muted loop height="100%">
+                          <source src="./t2m_videos/ours_5.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                      <h2 class="subtitle is-5">Ours</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+                    <i> A person <span style="color:#06C755" ;>is reacting with surprise</span>, <span
+                        style="color:#DF1817" ;>stepping back quickly</span> and <span style="color:#00B0F0" ;>raising
+                        their hands</span>.</i>
+                  </p>
+                  <div class="columns is-centered">
+                    <div class="column">
+                      <div class="content has-text-centered">
+                        <div class="videobox">
+                          <video poster="" autoplay controls muted loop height="100%">
+                            <source src="./t2m_videos/momask_6.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <h2 class="subtitle is-5">MoMask</h2>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="content has-text-centered">
+                        <div class="videobox">
+                          <video poster="" autoplay controls muted loop height="100%">
+                            <source src="./t2m_videos/lcm_6.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <h2 class="subtitle is-5">MotionLCM V2</h2>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="content has-text-centered">
+                        <div class="videobox">
+                          <video poster="" autoplay controls muted loop height="100%">
+                            <source src="./t2m_videos/stable_6.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <h2 class="subtitle is-5">StableMoFusion</h2>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="content has-text-centered">
+                        <div class="videobox">
+                          <video poster="" autoplay controls muted loop height="100%">
+                            <source src="./t2m_videos/ours_6.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <h2 class="subtitle is-5">Ours</h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  <!---           T2M Comparisions        -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <br>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Long-Horizon Motion Generation</h2>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+      </div>
+      <div class="container">
+        <div style="height: 7px;"></div>
+        <div class="columns is-centered has-text-centered">
+        </div>
+
+        <div class="container">
+          <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+          <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+            <i id="long-horizon-rotating-caption" class="horizon-rotating-caption"></i>
+          </p>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./videos/flow_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">FlowMDM</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./videos/mardm_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">MARDM</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./videos/ours_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">Ours</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="container">
+          <div style="height: 7px;"></div>
+          <div class="columns is-centered has-text-centered">
+          </div>
+          <div class="container">
+            <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+            <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+              <i id="long-horizon-rotating-caption-2" class="horizon-rotating-caption"></i>
+            </p>
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/flow_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">FlowMDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/mardm_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MARDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/ours_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">Ours</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <div class="container">
+        <div style="height: 7px;"></div>
+        <div class="columns is-centered has-text-centered">
+        </div>
+        <div class="container">
+          <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+          <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+            <i id="long-horizon-rotating-caption-3" class="horizon-rotating-caption"></i>
+          </p>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./videos/flow_3.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">FlowMDM</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./videos/mardm_3.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">MARDM</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./videos/ours_3.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">Ours</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <div class="container">
+        <div style="height: 7px;"></div>
+        <div class="columns is-centered has-text-centered">
+          <div class="container">
+            <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+            <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+              <i id="long-horizon-rotating-caption-4" class="horizon-rotating-caption"></i>
+            </p>
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/flow_4.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">FlowMDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/mardm_4.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MARDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/ours_4.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">Ours</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container">
+          <div style="height: 7px;"></div>
+          <div class="columns is-centered has-text-centered">
+          </div>
+          <div class="container">
+            <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+            <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+              <i id="long-horizon-rotating-caption-5" class="horizon-rotating-caption"></i>
+            </p>
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/flow_5.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">FlowMDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/mardm_5.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MARDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./videos/ours_5.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">Ours</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+</body>
+
+</html>

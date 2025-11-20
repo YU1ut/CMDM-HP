@@ -101,7 +101,7 @@ $(document).ready(function() {
     attachTimedCaption('long-horizon-rotating-caption-5', [
         "1: A person <span style='color:#06C755'>stretches their right leg forward</span>.",
         "2: A person <span style='color:#06C755'>is walking on a treadmill</span>.",
-        "3: A person waves to someone on the left.",
+        "3: A person <span style='color:#06C755'>waves to someone on the left</span>.",
         "4: A person <span style='color:#06C755'>sits down and crosses their legs</span>.",
         "5: A person <span style='color:#06C755'>raises one hand to ask a question</span>.",
         "6: A man <span style='color:#06C755'>performs a few squats</span>.",

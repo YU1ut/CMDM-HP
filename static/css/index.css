@@ -416,6 +416,11 @@ body.sidebar-hidden .sidebar {
 
 
 
+/* Highlight border for 'Ours' method videos */
+.videobox:has(source[src*="/ours_"]) {
+  border: 3px solid #06C755;
+}
+
 
 
 

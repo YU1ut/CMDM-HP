@@ -31,6 +31,41 @@
 
 <body>
 
+  <div id="sidebar" class="sidebar" role="navigation" aria-label="Primary">
+    <div class="sidebar-content">
+      <div class="sidebar-header">
+        <p class="sidebar-title">Contents</p>
+      </div>
+      <nav class="sidebar-menu">
+        <a class="sidebar-item" href="#long-horizon-humanml3d">
+          <span class="sidebar-text">
+            <span class="sidebar-label">Long-Horizon</span>
+            <span class="sidebar-sublabel">HumanML3D</span>
+          </span>
+        </a>
+        <a class="sidebar-item" href="#text-to-motion-humanml3d">
+          <span class="sidebar-text">
+            <span class="sidebar-label">Text-to-Motion</span>
+            <span class="sidebar-sublabel">HumanML3D</span>
+          </span>
+        </a>
+        <a class="sidebar-item" href="#long-horizon-snapmogen">
+          <span class="sidebar-text">
+            <span class="sidebar-label">Long-Horizon</span>
+            <span class="sidebar-sublabel">SnapMoGen</span>
+          </span>
+        </a>
+        <a class="sidebar-item" href="#text-to-motion-snapmogen">
+          <span class="sidebar-text">
+            <span class="sidebar-label">Text-to-Motion</span>
+            <span class="sidebar-sublabel">SnapMoGen</span>
+          </span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="main-content">
 
   <section class="hero">
     <div class="hero-body">
@@ -54,13 +89,16 @@
 
 
   <!---           T2M Comparisions        -->
-  <section class="hero is-small">
+  <section id="long-horizon-humanml3d" class="hero is-small">
     <div class="hero-body">
       <br>
       <div class="columns is-centered has-text-centered">
         <h2 class="title is-3">Long-Horizon Motion Generation</h2>
       </div>
-
+      <div class="has-text-centered" style="margin: 0.5rem 0 1rem;">
+        <h2 class="title is-4">Dataset: HumanML3D</h2>
+      </div>
+      <br>
       <div class="columns is-centered has-text-centered">
       </div>
       <div class="container">
@@ -288,17 +326,17 @@
   </section>
 
   <!---           Gallery T2M      -->
-  <section class="hero is-light is-small">
+  <section id="text-to-motion-humanml3d" class="hero is-light is-small">
     <div class="hero-body">
       <br>
       <div class="columns is-centered has-text-centered">
         <h2 class="title is-3">Text-to-Motion Generation</h2>
       </div>
+      <div class="has-text-centered" style="margin: 0.5rem 0 1rem;">
+        <h2 class="title is-4">Dataset: HumanML3D</h2>
+      </div>
       <br>
       <div class="container">
-        <div class="has-text-centered" style="margin: 0.5rem 0 1rem;">
-          <h2 class="title is-4">Dataset: HumanML3D</h2>
-        </div>
         <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
           <i> A person <span style="color:#06C755" ;>raises both knees alternately</span> <span style="color:#DF1817"
               ;>in a marching motion</span> <span style="color:#00B0F0" ;>in place</span> while keeping rhythm.</i>
@@ -589,16 +627,171 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      
-      <div class="container">
-        <hr>
+  <!---           SnapMoGen Long-Horizon      -->
+  <section id="long-horizon-snapmogen" class="hero is-small">
+    <div class="hero-body">
+      <br>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Long-Horizon Motion Generation</h2>
       </div>
-      
+      <div class="has-text-centered" style="margin: 0.5rem 0 1rem;">
+        <h2 class="title is-4">Dataset: SnapMoGen</h2>
+      </div>
+      <br>
+      <div class="columns is-centered has-text-centered">
+      </div>
       <div class="container">
-        <div class="has-text-centered" style="margin: 0.5rem 0 1rem;">
-          <h2 class="title is-4">Dataset: SnapMoGen</h2>
+        <div style="height: 7px;"></div>
+        <div class="columns is-centered has-text-centered">
         </div>
+
+        <div class="container">
+          <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+          <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+            <i id="snap-long-horizon-caption-1" class="horizon-rotating-caption"></i>
+          </p>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./snap_videos/flow_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">FlowMDM</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./snap_videos/mardm_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">MARDM</h2>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <div class="videobox">
+                  <video poster="" autoplay controls muted loop height="100%">
+                    <source src="./snap_videos/ours_1.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <h2 class="subtitle is-5">Ours</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="container">
+          <div style="height: 7px;"></div>
+          <div class="columns is-centered has-text-centered">
+          </div>
+          <div class="container">
+            <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+            <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+              <i id="snap-long-horizon-caption-2" class="horizon-rotating-caption"></i>
+            </p>
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./snap_videos/flow_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">FlowMDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./snap_videos/mardm_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MARDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./snap_videos/ours_2.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">Ours</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br/>
+        <div class="container">
+          <div style="height: 7px;"></div>
+          <div class="columns is-centered has-text-centered">
+          </div>
+          <div class="container">
+            <div class="has-text-centered" style="margin-bottom: 10px;"> </div>
+            <p class="subtitle handwriting has-text-centered" style="font-weight: 200; font-size: 1.25rem;">
+              <i id="snap-long-horizon-caption-3" class="horizon-rotating-caption"></i>
+            </p>
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./snap_videos/flow_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">FlowMDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./snap_videos/mardm_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">MARDM</h2>
+                </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <div class="videobox">
+                    <video poster="" autoplay controls muted loop height="100%">
+                      <source src="./snap_videos/ours_3.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <h2 class="subtitle is-5">Ours</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section id="text-to-motion-snapmogen" class="hero is-light is-small">
+    <div class="hero-body">
+      <br>
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Text-to-Motion Generation</h2>
+      </div>
+      <div class="has-text-centered" style="margin: 0.5rem 0 1rem;">
+        <h2 class="title is-4">Dataset: SnapMoGen</h2>
+      </div>
+      <br>
+      <div class="container">
+
         <!-- Row 1: prompts 1 and 2 -->
         <div class="columns is-centered">
           <div class="column">
@@ -773,9 +966,9 @@
       </div>
   </section>
 
-
-
   <!-- moved Long-Horizon section above (removed duplicate section) -->
+
+  </main>
 
 
 </body>

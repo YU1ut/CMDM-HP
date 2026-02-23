@@ -88,11 +88,96 @@
               <span class="author-block"><sup>1</sup>LY Corporation</span>
               <span class="author-block"><sup>2</sup>Waseda University</span>
             </div>
-            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+              </div>
+
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./assets/figures/overview.webp">
+        <h2 class="subtitle has-text-centered">
+          We propose CMDM, a novel causal motion diffusion framework that unifies causal autoregression and diffusion denoising within a motion–language–aligned latent space.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent advances in motion diffusion models have substantially improved the realism of human motion synthesis. 
+              However, existing approaches either rely on full-sequence diffusion models with bidirectional generation, which limits temporal causality and real-time applicability, or autoregressive models that suffer from instability and cumulative errors. 
+              In this work, we present Causal Motion Diffusion Models (CMDM), a unified framework for autoregressive motion generation based on a causal diffusion transformer that operates in a semantically aligned latent space. 
+              CMDM builds upon a Motion-Language-Aligned Causal VAE (MAC-VAE), which encodes motion sequences into temporally causal latent representations. 
+              On top of this latent representation, an autoregressive diffusion transformer is trained using causal diffusion forcing to perform temporally ordered denoising across motion frames. 
+              To achieve fast inference, we introduce a frame-wise sampling schedule with causal uncertainty, where each subsequent frame is predicted from partially denoised previous frames. 
+              The resulting framework supports high-quality text-to-motion generation, streaming synthesis, and long-horizon motion generation at interactive rates. 
+              Experiments on HumanML3D and SnapMoGen demonstrate that CMDM outperforms existing diffusion and autoregressive models in both semantic fidelity and temporal smoothness, while substantially reducing inference latency.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Proposed Method</h2>
+      <div class="content">
+        <center><img src="./assets/figures/pipeline.webp"/></center>
+        <p>
+          Overview of the proposed CMDM framework. 
+          CMDM consists of three key components: 
+          (a) MAC-VAE, which encodes motion sequences into motion–language–aligned and temporally causal latent features using a causal encoder–decoder structure supervised by motion-language model alignment; 
+          (b) Causal-DiT, which performs diffusion denoising with causal self-attention and cross-attention to text embeddings, ensuring temporally ordered and semantically consistent frame refinement; 
+          and (c) Causal Diffusion Forcing, which applies independent frame-level noise during training and a causal uncertainty schedule during inference, where the redness intensity represents the noise level. 
+          This design enables CMDM to achieve temporally consistent, semantically aligned, and efficient text-to-motion generation suitable for streaming and long-horizon synthesis.
+        </p>
+      </div>
     </div>
   </section>
 

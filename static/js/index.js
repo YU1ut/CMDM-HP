@@ -144,29 +144,37 @@ $(document).ready(function() {
     // Sidebar navigation functionality
     var sidebar = document.getElementById('sidebar');
     var sidebarItems = document.querySelectorAll('.sidebar-item');
-    var sections = ['long-horizon-humanml3d', 'text-to-motion-humanml3d', 'long-horizon-snapmogen', 'text-to-motion-snapmogen'];
+    // Sections must match sidebar item order: Abstract, Method, Long-Horizon HumanML3D, etc.
+    var sections = ['abstract', 'method', 'long-horizon-humanml3d', 'text-to-motion-humanml3d', 'long-horizon-snapmogen', 'text-to-motion-snapmogen', 'BibTeX'];
     var body = document.body;
     
     // Update active sidebar item on scroll
     function updateActiveSidebarItem() {
         var scrollPos = window.scrollY + 150; // Offset for better UX
         
-        sections.forEach(function(sectionId, index) {
-            var section = document.getElementById(sectionId);
+        var activeIndex = 0;
+        for (var i = 0; i < sections.length; i++) {
+            var section = document.getElementById(sections[i]);
             if (section) {
                 var sectionTop = section.offsetTop;
                 var sectionBottom = sectionTop + section.offsetHeight;
-                
                 if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                    sidebarItems.forEach(function(item) {
-                        item.classList.remove('active');
-                    });
-                    if (sidebarItems[index]) {
-                        sidebarItems[index].classList.add('active');
-                    }
+                    activeIndex = i;
+                    break;
                 }
+                if (scrollPos < sectionTop) {
+                    break;
+                }
+                activeIndex = i;
             }
+        }
+        
+        sidebarItems.forEach(function(item) {
+            item.classList.remove('active');
         });
+        if (sidebarItems[activeIndex]) {
+            sidebarItems[activeIndex].classList.add('active');
+        }
     }
     
     // Update on scroll
@@ -181,6 +189,10 @@ $(document).ready(function() {
             var targetSection = document.getElementById(targetId);
             
             if (targetSection) {
+                // Immediately highlight the clicked item
+                sidebarItems.forEach(function(i) { i.classList.remove('active'); });
+                item.classList.add('active');
+                
                 var offsetTop = targetSection.offsetTop - 20;
                 window.scrollTo({
                     top: offsetTop,
